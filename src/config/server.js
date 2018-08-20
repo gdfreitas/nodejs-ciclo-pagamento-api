@@ -1,4 +1,4 @@
-const port = 80
+const DEFAULT_PORT = 80
 
 const bodyParser = require('body-parser')
 const express = require('express')
@@ -11,8 +11,8 @@ server.use(bodyParser.json())
 server.use(cors)
 server.use(queryParser())
 
-server.listen(process.env.PORT || port, function() {
-    console.log(`api is running on port ${port}.`)
+server.listen(process.env.PORT || DEFAULT_PORT, function() {
+    console.log(`api is running on port ${process.env.PORT || DEFAULT_PORT}.`)
 })
 
 module.exports = server
