@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const env = require('../../.env')
+const env = require('../.env')
 
 const HTTP_FORBIDDEN = 403
 
