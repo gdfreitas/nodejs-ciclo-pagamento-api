@@ -7,7 +7,14 @@
     "dev": "nodemon",
     "production": "pm2 start src/loader.js --name my-money-backend"
   },
-  "keywords": ["api","backend", "mongodb", "nodejs", "express", "bcrypt"],
+  "keywords": [
+    "api",
+    "backend",
+    "mongodb",
+    "nodejs",
+    "express",
+    "bcrypt"
+  ],
   "author": "gabriel.freitas",
   "license": "ISC",
   "dependencies": {
