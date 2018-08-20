@@ -1,5 +1,5 @@
 // responsavel por fazer conexao com o mongo e mapeamento dos objetos para os documentos do mongo
-const mongoose = require('mongoose') 
+const mongoose = require('mongoose')
 
 // sobrescreve api de promise do mongoose com a do node
 mongoose.Promise = global.Promise
