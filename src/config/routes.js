@@ -9,15 +9,19 @@ module.exports = (server) => {
    server.use('/api', protectedApi)
 
    // utiliza o filtro de autenticação
-   protectedApi.use(auth) 
+   protectedApi.use(auth)
+
+   const CicloPagamento = require('../api/ciclo-pagamento/ciclo-pagamento.service')
+   CicloPagamento.register(protectedApi, '/ciclos-pagamentos')
+
 
    // ROTAS PÚBLICAS
    const openApi = express.Router()
    server.use('/oapi', openApi)
 
    const AuthService = require('../api/user/auth.service')
-    openApi.post('/login', AuthService.login)
-    openApi.post('/signup', AuthService.signup)
-    openApi.post('/validateToken', AuthService.validateToken)
+   openApi.post('/login', AuthService.login)
+   openApi.post('/signup', AuthService.signup)
+   openApi.post('/authorize', AuthService.authorize)
 
 }

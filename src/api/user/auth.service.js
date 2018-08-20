@@ -50,7 +50,7 @@ const login = (req, res, next) => {
 }
 
 // função para validar o token do usuário
-const validateToken = (req, res, next) => {
+const authorize = (req, res, next) => {
    const token = req.body.token || ''
    jwt.verify(token, env.authSecret, function (err, decoded) {
       return res
@@ -123,4 +123,4 @@ const signup = (req, res, next) => {
    })
 }
 
-module.exports = { login, signup, validateToken }
+module.exports = { login, signup, authorize }
