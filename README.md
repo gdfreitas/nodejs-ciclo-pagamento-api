@@ -63,6 +63,12 @@ Estes recursos possuem a camada de autenticação, sendo necessário enviar o to
 
 `src/.env` - Deve ser configurada uma chave secreta que será utilizada pelo `jsonwebtoken` para gerar o token de autenticação do usuário.
 
+## Variáveis de ambientes
+
+`"AUTH_SECRET"`: pode ser utilizada para definir a chave secreta utilizada pelo `jsonwebtoken`;
+
+`"MONGODB_URI"`: pode ser utilizada para definir a url de conexão com o mongodb;
+
 ## Recursos utilizados
 
 [MongoDB](https://docs.mongodb.com/) - base de dados NoSQL, alta performance, sem esquemas e orientado à documentos.  
