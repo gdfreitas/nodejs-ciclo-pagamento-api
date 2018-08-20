@@ -11,7 +11,7 @@ module.exports = (server) => {
    // utiliza o filtro de autenticação
    protectedApi.use(auth)
 
-   const CicloPagamento = require('../api/ciclo-pagamento/ciclo-pagamento.service')
+   const CicloPagamento = require('../api/modules/ciclo-pagamento/ciclo-pagamento.service')
    CicloPagamento.register(protectedApi, '/ciclos-pagamentos')
 
 
@@ -19,7 +19,7 @@ module.exports = (server) => {
    const openApi = express.Router()
    server.use('/oapi', openApi)
 
-   const AuthService = require('../api/user/auth.service')
+   const AuthService = require('../api/core/user/auth.service')
    openApi.post('/login', AuthService.login)
    openApi.post('/signup', AuthService.signup)
    openApi.post('/authorize', AuthService.authorize)

@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const CicloPagamento = require('./ciclo-pagamento')
 
-const errorHandler = require('../common/error-handler')
+const errorHandler = require('../../common/error-handler')
 
 // define os métodos http pelo node-restful
 CicloPagamento.methods(['get', 'post', 'put', 'delete']) // 'patch' não é suportado por padrão, porém há plugins que implementam
