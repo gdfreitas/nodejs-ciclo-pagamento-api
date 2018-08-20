@@ -4,28 +4,69 @@ O projeto consiste em uma api didática de ciclo de pagamentos utilizando as tec
 
 ## Recursos públicos
 
-`POST` @ /oapi/signup  
-`POST` @ /oapi/login  
-`POST` @ /oapi/validateToken  
+`POST` @ /oapi/signup  (cadastra usuário)
+
+```json
+{
+  "name": "Teste",
+  "email": "teste@teste.com",
+  "password": "Aa1234#",
+  "confirm_password": "Aa1234#"
+}
+```
+
+`POST` @ /oapi/login  (obtém o token de autorização)
+
+```json
+{
+  "email": "teste@gmail.com",
+  "password": "Aa123#!"
+}
+```
+
+`POST` @ /oapi/authorize  (verifica se o token é valido)
+
+```json
+{
+  "token": "<TOKEN>",
+}
+```
 
 ## Recursos autenticados
 
-`GET` @ /api/ciclos-pagamentos  
-`GET` @ /api/ciclos-pagamentos/{id}  
-`POST` @ /api/ciclos-pagamentos  
-`PUT` @ /api/ciclos-pagamentos/{id}  
-`DELETE` @ /api/ciclos-pagamentos/{id}  
-`GET` @ /api/ciclos-pagamentos/count  
-`GET` @ /api/ciclos-pagamentos/summary  
+Estes recursos possuem a camada de autenticação, sendo necessário enviar o token de autorização. Este pode ser enviado através do body, queryParams como `token` ou através de header como `Authorization` ou  `authorization`
+
+`GET` @ /api/ciclos-pagamentos  **(lista os ciclos de pagamentos)**  
+`GET` @ /api/ciclos-pagamentos/{id}  **(recupera o ciclo pelo id)**  
+`POST` @ /api/ciclos-pagamentos  **(cria um novo ciclo de pagamento)**  
+
+```json
+{
+  "name": "Ciclo 1",
+  "month": 1,
+  "year": 2018,
+  "credits": [
+    {"name": "Crédito 1", "value": 1000}
+  ],
+  "debts": [
+    { "name": "Débito 1", "value": 220, "status": "PENDENTE"}
+  ]
+}
+```
+
+`PUT` @ /api/ciclos-pagamentos/{id}  **(altera um ciclo de pagamento pelo id)**  
+`DELETE` @ /api/ciclos-pagamentos/{id}  **(exclui um ciclo de pagamento pelo id)**  
+`GET` @ /api/ciclos-pagamentos/count  **(contabiliza o total de registros)**  
+`GET` @ /api/ciclos-pagamentos/summary  **(exibe um resumo de créditos/débitos cadastrados)**
 
 ## Configuração
 
-`/.env` - Deve ser configurada uma chave secreta que será utilizada pelo `jsonwebtoken` para gerar o token de autenticação do usuário.
+`src/.env` - Deve ser configurada uma chave secreta que será utilizada pelo `jsonwebtoken` para gerar o token de autenticação do usuário.
 
 ## Recursos utilizados
 
-[MongoDB](https://docs.mongodb.com/) - base de dados NoSQL, alta performance, sem esquemas e orientado à documentos.   
-[NodeJS](https://nodejs.org/en/docs/) - interpretador de código javascript no lado servidor. 
+[MongoDB](https://docs.mongodb.com/) - base de dados NoSQL, alta performance, sem esquemas e orientado à documentos.  
+[NodeJS](https://nodejs.org/en/docs/) - interpretador de código javascript no lado servidor.
 [express](http://expressjs.com/en/4x/api.html) - servidor web não organizado e minimalista para NodeJS  
 [express-query-init](https://www.npmjs.com/package/express-query-int) - middleware auxiliar para fazer o parse de query parameters numéricos  
 [mongoose](http://mongoosejs.com/docs/guide.html) - api de mapeamento dos objetos javascript para documentos (ODM - Object Data Mapping) e sistemas de conversão de tipos, validaÇão, criação de consultas e hooks para lógicas de negócio.  
