@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  ciclo-mongodb:
+    image: mongo:3.4
+    volumes:
+      - ciclo-mongodb-data:/data/db
+
+  ciclo-api:
+    image: node:8.4
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      - AUTH_SECRET=ultraSecretSalting
+      - MONGODB_URI=mongodb://ciclo-mongodb/ciclosPagamentos
+      - PORT=3000
+    volumes:
+      - .:/api
+    working_dir: /api
+    command: bash -c "npm i && npm run production"
+
+volumes: 
+  ciclo-mongodb-data:

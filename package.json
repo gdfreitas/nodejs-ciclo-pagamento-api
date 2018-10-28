@@ -5,7 +5,7 @@
   "main": "src/loader.js",
   "scripts": {
     "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name my-money-backend"
+    "production": "pm2 start src/loader.js --name ciclo-pagamento-api"
   },
   "keywords": [
     "api",
@@ -22,6 +22,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-query-int": "^1.0.1",
+    "http-status-codes": "^1.3.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.7.0",
@@ -30,6 +31,14 @@
     "pm2": "^2.1.5"
   },
   "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "nodemon": "^1.11.0"
   }
 }

@@ -12,7 +12,7 @@ server.use(cors)
 server.use(queryParser())
 
 server.listen(process.env.PORT || DEFAULT_PORT, function () {
-   console.log(`api is running on port ${process.env.PORT || DEFAULT_PORT}.`)
+  console.log(`api is running on port ${process.env.PORT || DEFAULT_PORT}.`)
 })
 
 module.exports = server

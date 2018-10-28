@@ -5,8 +5,12 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
 // exporta conexão
-const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://localhost/ciclospagamentos'
-module.exports = mongoose.connect(url, { useMongoClient: true })
+const url = process.env.MONGODB_URI || 'mongodb://localhost/ciclospagamentos'
+
+module.exports = mongoose.connect(
+  url,
+  { useMongoClient: true }
+)
 
 // define mensagens padrões de erros
 mongoose.Error.messages.Number.required = `O atributo '{PATH}' deve ser informado.` // neste caso o required, que por padrão está em inglês
