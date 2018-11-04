@@ -13,11 +13,15 @@ services:
     depends_on: 
       - ciclo-mongodb
     build: .
+    command: node_modules/.bin/nodemon --exec npm start
     environment:
       - NODE_ENV=development
       - AUTH_SECRET=ultraSecretSalting
       - MONGODB_URI=mongodb://ciclo-mongodb/ciclosPagamentos
       - PORT=3000
+    volumes:
+      - .:/home/app/ciclo-pagamento-api
+      - /home/app/ciclo-pagamento-api/node_modules # compartilha o node_modules da imagem
     ports:
       - "80:3000"
 

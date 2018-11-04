@@ -4,9 +4,8 @@
   "description": "O projeto consiste em uma api didática de ciclo de pagamentos utilizando as tecnologias MongoDB, NodeJS, Express e Mongoose",
   "main": "src/loader.js",
   "scripts": {
-    "dev": "nodemon",
-    "production-pm2": "pm2 start src/loader.js --name ciclo-pagamento-api",
-    "production": "node src/loader.js"
+    "development": "nodemon",
+    "start": "node src/loader.js"
   },
   "keywords": [
     "api",
@@ -29,12 +28,10 @@
     "mongoose": "^4.7.0",
     "mongoose-paginate": "^5.0.3",
     "node-restful": "^0.2.5",
-    "pm2": "^2.1.5"
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-google": "^0.11.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
