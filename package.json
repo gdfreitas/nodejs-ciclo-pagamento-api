@@ -5,7 +5,8 @@
   "main": "src/loader.js",
   "scripts": {
     "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name ciclo-pagamento-api"
+    "production-pm2": "pm2 start src/loader.js --name ciclo-pagamento-api",
+    "production": "node src/loader.js"
   },
   "keywords": [
     "api",
@@ -18,7 +19,7 @@
   "author": "gabriel.freitas",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-query-int": "^1.0.1",

@@ -7,10 +7,17 @@ mongoose.Promise = global.Promise
 // exporta conexão
 const url = process.env.MONGODB_URI || 'mongodb://localhost/ciclospagamentos'
 
-module.exports = mongoose.connect(
-  url,
-  { useMongoClient: true }
-)
+let MongoConnection
+try {
+  MongoConnection = mongoose.connect(
+    url,
+    { useMongoClient: true }
+  )
+} catch (err) {
+  throw Error('Não foi possível se conectar ao MongoDB', err)
+}
+
+module.exports = MongoConnection
 
 // define mensagens padrões de erros
 mongoose.Error.messages.Number.required = `O atributo '{PATH}' deve ser informado.` // neste caso o required, que por padrão está em inglês

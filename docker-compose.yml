@@ -7,10 +7,11 @@ services:
       - ciclo-mongodb-data:/data/db
 
   ciclo-api:
-    image: node:8.4
-    build: .
+    depends_on: 
+      - ciclo-mongodb
+    image: node:8.11
     ports:
-      - 3000:3000
+      - "80:3000"
     environment:
       - AUTH_SECRET=ultraSecretSalting
       - MONGODB_URI=mongodb://ciclo-mongodb/ciclosPagamentos
