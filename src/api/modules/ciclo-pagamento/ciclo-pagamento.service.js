@@ -31,7 +31,7 @@ CicloPagamento.route('summary', (req, res, next) => {
     // fluxo de agregação  (pipeline aggregation)
     // docs: https://docs.mongodb.com/manual/reference/operator/aggregation
     CicloPagamento.aggregate(
-        {
+        [{
             $project: {
                 // projeção
                 credit: { $sum: '$credits.value' }, // credit (soma do atributo value da coleção $credits)
@@ -52,15 +52,9 @@ CicloPagamento.route('summary', (req, res, next) => {
                 credit: 1,
                 debt: 1
             }
-        },
-        (error, result) => {
-            if (error) {
-                res.status(INTERNAL_SERVER_ERROR).json({ errors: [error] })
-            } else {
-                res.json(result[0] || { credit: 0, debt: 0 })
-            }
-        }
-    )
+        }])
+        .then(result => res.json(result[0] || { credit: 0, debt: 0 }))
+        .catch(error => res.status(INTERNAL_SERVER_ERROR).json({ errors: [error] }))
 })
 
 module.exports = CicloPagamento
